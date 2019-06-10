@@ -1,0 +1,52 @@
+<router-outlet></router-outlet>
+
+
+    
+
+    <form class="shadow-lg p-3 mb-5 bg-white rounded">
+
+        <h1 class="display-5">Listagem de Fabricantes</h1>
+
+        <div id="linha">
+        
+          </div>
+    
+      <div class="form-group col-sm-12" >
+
+        <div class="row">
+            <div class="col-sm-6" >
+                <label for="exampleFormControlSelect1">Razão social</label>
+                <input class="form-control form-control-lg" id="razao" type="text" placeholder="Razão social do fabricante">
+            </div>
+            <div class="col-sm-3" >
+                <button  style="margin-top: 40px" type="submit" class="btn btn-primary ">Pesquisar</button>
+            </div>
+            <div class="col-sm-3" >
+                <button  style="margin-top: 40px" type="submit" class="btn btn-primary " [routerLink]="['../cadastroFabricante' , 'Incluir', 0]">Cadastrar Novo</button>
+            </div>
+        </div>
+      </div>
+
+      <table class="table table-bordered">
+        <thead class="bg-primary">
+          <tr>
+            <th style="width: 10%" scope="col">Id</th>
+            <th style="width: 65" scope="col">Razão social</th>
+            <th style="width: 25%" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fabricante of fabricantes">
+            <td>{{fabricante.idfabricante}}</td>
+            <td>{{fabricante.razaosocial}}</td>
+            <td>
+              <button class="btn btn-primary" [routerLink]="['../cadastroFabricante', 'Alterar', fabricante.idfabricante]">Alterar</button>
+              <button class="btn btn-primary">Excluir</button>
+            </td>
+           
+          </tr>
+        </tbody>
+      </table>
+    
+    </form>
+    

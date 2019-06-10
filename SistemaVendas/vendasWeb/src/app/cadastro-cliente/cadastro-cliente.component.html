@@ -1,0 +1,46 @@
+<router-outlet></router-outlet>
+
+<form #frm="ngForm" (ngSubmit)="onSalvar(frm)" class="shadow-lg p-3 mb-5 bg-white rounded">
+
+    <h1 class="display-5">Cadastro de Cliente - {{operacao}} </h1>
+
+
+    <div id="linha">
+        
+      </div>
+    
+      <div class="form-group">
+          
+        <label for="exampleFormControlInput1">Id</label>
+        <input class="form-control form-control-lg" id="id" name="id" [disabled]="true" [(ngModel)]="idcliente" type="text">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Nome</label>
+        <input class="form-control form-control-lg" id="nome" required  [disabled]="disabledbNome" name="nome" [(ngModel)]="nome" type="text" required placeholder="Nome do Cliente">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">CPF</label>
+        <input class="form-control form-control-lg" id="cpf" required [disabled]="disabledCpf" name="cpf" [(ngModel)]="cpf" type="text" required placeholder="CPF">
+      </div>
+      
+      <div class="btn-group">
+        <button type="submit" id="btnSalvar" class="btn btn-primary">Salvar</button>
+        <button type="reset" id="btnCancelar" class="btn btn-primary" >Cancelar</button>
+        <button type="button" id="btnRetornar" (click)="onRetornar()" class="btn btn-primary" >Retornar</button>
+      </div>
+    
+    </form>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

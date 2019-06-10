@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.container{
+
+    margin-top: 15px;
+}
+
+
+.display-5{
+    color:#1e90ff
+}
+
+
+#linha{
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    border-bottom: 1px solid #1e90ff;
+}
+
+
+.btn{
+
+    margin: 3mm;
+   
+    
+}
+
+
+#id{
+    width:50px;
+    }
+    
+ #nome{
+        width:500px;
+    }
+
+    #razao{
+        width: 500px;
+    }
+    
