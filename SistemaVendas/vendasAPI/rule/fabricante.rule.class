@@ -1,0 +1,96 @@
+<?php
+
+class TFabricanteRule
+{
+    
+    private function validate(TFabricanteEntity $entity)
+    {
+        
+        if ($entity->razaosocial == "")
+        {
+            throw new DataException("Razão social do fabricante inválida !!!");
+        }
+        
+        if ($entity->telefone == "")
+        {
+            throw new DataException("Telefone inválido !!!");
+        }
+        
+    }
+    
+    public function insert(TFabricanteEntity $entity)
+    {
+        $json = new TJsonResult();
+        try {
+            $this->validate($entity);
+            $dao = new TFabricanteDao();
+            $dao->insert($entity);
+            
+            return $json->ok('Fabricante foi incluído com sucesso.');
+        } catch (Exception $e) {
+            return $json->erro($e->getMessage());
+        }
+    }
+    
+    public function update(TFabricanteEntity $entity)
+    {
+        $json = new TJsonResult();
+        try {
+            
+            if ($entity == NULL || $entity->idfabricant == NULL) {
+                return $json->erro('Fabricante inválido.');
+            }
+            
+            
+            $this->validate($entity);
+            
+            $dao = new TFabricanteDao();
+            if ($dao->get($entity->idfabricante)) {
+                $dao->update($entity);
+            } else {
+                return $json->erro('Fabricante não cadastrado.');
+            }
+            
+            
+            return $json->ok('Fabricante foi alterado com sucesso.');
+        } catch (Exception $e) {
+            return $json->erro($e->getMessage());
+        }
+    }
+    
+    public function delete($id)
+    {
+        $json = new TJsonResult();
+        try {
+            $dao = new TFabricanteDao();
+            if ($dao->get($id)) {
+                $dao->delete($id);
+            } else {
+                return $json->erro('Fabricante não cadastrado.');
+            }
+            
+            return $json->ok('Fabricante foi excluído com sucesso.');
+        } catch (Exception $e) {
+            return $json->erro($e->getMessage());
+        }
+    }
+    
+    public function get($id)
+    {
+        $json = new TJsonResult();
+        try {
+            $dao = new TFabricanteDao();
+            $entity = $dao->get($id);
+            
+            if ($entity) {
+                return $json->data($entity);
+            } else {
+                return $json->erro('Fabricante não cadastrado.');
+            }
+        } catch (Exception $e) {
+            return $json->erro($e->getMessage());
+        }
+    }
+}
+
+?>
